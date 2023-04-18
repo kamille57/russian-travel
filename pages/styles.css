@@ -2,17 +2,20 @@
 @font-face {
 	font-family: 'Inter-Regular'; 
 	src: local('Inter-Regular'),
-    url(../Fonts-Inter/Inter-Regular.otf) format('opentype'); 
-    font-family: 'Inter-Black'; 
+  url(../Inter/Inter-Regular.woff2) format('woff2'),
+  url(../Inter/Inter-Regular.woff) format('woff');}
+   
+  @font-face {
+  font-family: 'Inter-Black'; 
 	src: local('Inter-Black'),
-    url(../Fonts-Inter/Inter-Black.otf) format('opentype'); 
+  url(../Inter/Inter-Black.woff2) format('woff2'),
+  url(../Inter/Inter-Black.woff) format('woff'); 
 }
 
 .page {
   border: 1px solid red;
-  margin: 0;
-  /*width: 100%;*/
-  width: 1280px;
+  margin: 0 auto;
+  width: 100%;
   background: #2A2C2F;
   font-family: "Inter-Regular";
   -moz-osx-font-smoothing: grayscale;
@@ -24,6 +27,8 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  overflow: hidden;
+  cursor: pointer;
 }
 
 
@@ -32,17 +37,17 @@
 отступ от header для десктопа 56px;*/
 .header {
   border: 1px solid red;
-  margin: 28px 48px 48px;
+  margin: 28px 48px 0;
   height: 52px;
   display: flex;
   justify-content: space-between;
-  
+  align-items: center;
 }
 
 
 .content {
     border: 2px solid red;
-    margin: 0 48px 24px;
+    margin: 48px 48px 24px;
     color: white;
     display: flex;
     flex-direction: column;
@@ -58,16 +63,17 @@
 }
 
 .header-links {
+  margin: 0;
+  padding: 0;
   list-style-type: none;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   gap: 18px;
 }
 
 .header__link {
   border: 1px solid blue;
-  width: 30px;
-  height: 28px;
   color: white;
   line-height: 28px;
   font-size: 24px;
@@ -86,10 +92,9 @@
 
 .lead {
   border: 1px solid blue;
-  margin: 0 100px;
+  margin: 0;
   display: flex;
   flex-direction: column;
-  box-sizing: border-box;
 }
 
 .lead__title {
@@ -100,25 +105,25 @@
   font-size: 96px;
   font-weight: 900;
   text-align: center;
-  min-width: 288px;
-  max-width: 720px;
+  width: min-content;
 }
 
 .lead__subtitle {
   border: 1px solid blue;
-  margin: 0 auto 64px;
+  margin: 0 auto 56px;
   line-height: 36px;
   font-size: 30px;
   font-weight: 400;
   text-align: center;
   min-width: 288px;
   max-width: 640px;
+  
 }
 
 .lead__image {
   border: 1px solid yellow;
   margin: 0;
-  flex-basis: 615px;
+  width: 100%;
   align-self: center;
 }
 
@@ -135,9 +140,10 @@
 
 .intro {
   border: 1px solid blue;
-  margin: 0 100px;
-  width: 690px;
-  box-sizing: border-box;
+  max-width: 690px;
+  margin: 0;
+  padding: 0;
+  
 }
 
 .intro__title {
@@ -149,6 +155,7 @@
 }
 
 .intro__text {
+  margin: 40px 0 33px;
   line-height: 26px;
   font-size: 16px;
   font-weight: 400;
@@ -184,14 +191,17 @@
 
 .places {
   border: 1px solid blue;
-  margin: 0 100px;
+  margin: 0;
+  display: grid;
+  grid-template-rows: repeat(5, max-content);
+  row-gap: 80px;
 }
 
 .place {
     border: 1px solid green;
-    margin: 80px 0 0;
+    margin: 0;
     display: grid;
-    grid-template-columns: repeat(2, minmax(288px, 1fr));
+    grid-template-columns: repeat(2, minmax(288px, max-content));
     grid-template-rows: repeat(3, min-content);
     gap: 48px 32px;
     grid-template-areas: 
@@ -200,26 +210,24 @@
     "image paragraph"
 }
 
-.place:first-child {
-  margin: 0;
-}
 
 .place__title {
-    border: 1px solid green;
-    margin: 0;
- grid-area: title;
- font-family: 'Inter-Black';
- line-height: 76px;
- font-size: 72px;
- font-weight: 900;
- align-self: start;
+  border: 1px solid green;
+  margin: 0;
+  grid-area: title;
+  font-family: 'Inter-Black';
+  line-height: 76px;
+  font-size: 72px;
+  font-weight: 900;
+  align-self: start;
+  width: min-content;
 }
 
 .place__image {
-    border: 1px solid green;
-grid-area: image;
-object-fit: cover;
-  object-position: center;
+  border: 1px solid green;
+  grid-area: image;
+  object-fit: cover;
+  width: 100%;
 }
 
 .place__website {
@@ -238,6 +246,7 @@ line-height: 12px;
 font-size: 12px;
 font-weight: 400;
 letter-spacing: 2px;
+opacity: 80%;
 }
 
 .place__website__link {
@@ -248,8 +257,8 @@ font-weight: 400;
 }
 
 .place__website__link:hover {
-    cursor: url("../images/kursor.svg") 2 2 auto;
-    transition: 1s;
+  cursor: url("../images/kursor.svg") 2 2 auto;
+  transition: 1s;
   opacity: 80%;
 }
 
@@ -276,12 +285,21 @@ font-weight: 400;
   margin: 0;
   display: grid;
   grid-template-columns: minmax(320px, 1184px);
-  grid-template-rows: minmax(200px, 740px);
-  grid-column: 1/1;
-  grid-row: 1/1;
+  grid-template-rows: minmax(200px, min-content);
+  width: 100%;
+  object-fit: cover;
+}
+  
+.cover__group {
   justify-self: center;
   align-self: center;
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  grid-column: 1/1;
+  grid-row: 1/1;
+  z-index: 1;
 }
 /*здесь, чтобы затемнялись сразу все элементы
 .cover:hover {
@@ -305,22 +323,11 @@ font-weight: 400;
   grid-column: 1/1;
   grid-row: 1/1;
   opacity: .8;
-  object-fit: cover;
-  width: 100%;
+  width: 100vw;
+  justify-self: center;
+  
 }
 
-.cover__group {
-  margin: auto;
-  justify-self: center;
-  align-self: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 32px;
-  grid-column: 1/1;
-  grid-row: 1/1;
-  z-index: 1;
-}
 
 .cover__title {
   margin: 0;
@@ -345,7 +352,7 @@ font-weight: 400;
   color: white;
 }
 .cover__subtitle:hover {
-    cursor: url("../images/kursor.svg") 2 2 auto;
+    cursor: url("../images/kursor.svg") 2 2 pointer;
  }
 
 .footer {
@@ -385,3 +392,197 @@ font-weight: 400;
   font-size: 14px;
   font-weight: 400;
 }
+
+
+@media screen and (max-width: 500px)  {
+  .header {
+    margin: 16px 16px 0;
+  }
+  .logo-header {
+   width: 142px;
+   height: 42px;
+   background-size: contain;
+   background-repeat: no-repeat;
+   background-position: center;
+  }
+  .header__link {
+    line-height: 20px;
+    font-size: 18px;
+    font-weight: 400;
+  }
+.content {
+  margin: 48px 16px 24px;
+  row-gap: 64px;
+}
+  .lead__title {
+    margin: 0 auto 16px;
+    line-height: 44px;
+    font-size: 40px;
+    font-weight: 900;
+    
+  }
+  
+  .lead__subtitle {
+    line-height: 20px;
+    font-size: 16px;
+    font-weight: 400;
+  }
+  
+  .lead__image {
+    width: 100vw;
+    justify-self: center;
+    margin: 0;
+  }
+
+  .intro__title {
+    line-height: 35px;
+    font-size: 32px;
+    font-weight: 900;
+  }
+.intro__text {
+  line-height: 26px;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.intro__list {
+  line-height: 18px;
+  font-size: 12px;
+  font-weight: 400;
+}
+.photo-grid {
+row-gap: 12px;
+}
+
+.places {
+  display: flex;
+  flex-direction: column;
+}
+
+  .place {
+    display: flex;
+    flex-direction: column;
+    row-gap: 32px;
+  }
+  .place__title {
+    line-height: 35px;
+    font-size: 32px;
+    width: max-content;
+   }
+ .place__website {
+  align-self: start;
+ }
+   .place__image {
+    width: 100vw;
+ align-self: center;
+   }
+   .place__paragraph:first-child {
+    margin: 0 0 25px;
+}
+.cover {
+  display: flex;
+  flex-direction: column;
+}
+.cover__background {
+  width: 100vw;
+  align-self: center;
+}
+.cover__title {
+  line-height: 35px;
+  font-size: 32px;
+  font-weight: 900;
+}
+.cover__subtitle {
+line-height: 16px;
+  font-size: 12px;
+  font-weight: 400;
+}
+.footer {
+  display: flex;
+  flex-direction: column;
+  row-gap: 48px;
+}
+.menu {
+  display: flex;
+  flex-direction: column;
+  row-gap: 32px;
+}
+.footer__link {
+  line-height: 24px;
+  font-size: 24px;
+  font-weight: 400;
+}
+.footer__copyright {
+  line-height: 14px;
+  font-size: 14px;
+  font-weight: 400;
+}
+}
+
+@media screen and ((min-width: 501px) and (max-width: 800px)) {
+  .header {
+    margin-left: 24px;
+    margin-right: 24px;
+  }
+
+
+  .content {
+    row-gap: 88px;
+    margin: 48px 24px;
+  }
+
+.lead__image {
+  width: 100vw;
+  justify-self: center;
+  margin: 0;
+}
+
+  .intro {
+    max-width: 100%;
+  }
+
+  .place {
+  column-gap: 28px;
+  }
+
+  .place__title {
+    line-height: 46px;
+    font-size: 42px;
+   }
+  
+} 
+ 
+@media screen and (min-width: 801px) and (max-width: 1200px) {
+.photo-grid__item {
+  border: 1px solid #000;
+}
+  
+}
+
+@media screen and (min-width: 1200px) {
+  .header{
+    margin-bottom: 8px;
+  }
+  .lead {
+    margin: 0 100px;
+  }
+
+  .intro {
+    margin-left: 100px;
+  }
+  .lead__subtitle {
+    margin-bottom: 64px;
+  }
+
+  .places {
+    margin: 0 100px;
+  }
+
+  .place {
+    gap: 48px 40px;
+  }
+
+  .cover__background {
+    width: 100%;
+  }
+} 
