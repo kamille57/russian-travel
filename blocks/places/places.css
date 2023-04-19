@@ -1,0 +1,19 @@
+.places {
+  margin: 0;
+  display: grid;
+  grid-template-rows: repeat(5, max-content);
+  row-gap: 80px;
+}
+
+@media screen and (max-width: 767px)  { 
+  .places {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .places {
+    margin: 0 100px;
+  }
+}

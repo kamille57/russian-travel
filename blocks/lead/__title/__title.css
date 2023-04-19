@@ -1,0 +1,18 @@
+.lead__title {
+  margin: 0 auto 32px;
+  font-family: 'Inter-Black';
+  line-height: 100px;
+  font-size: 96px;
+  font-weight: 900;
+  text-align: center;
+  width: min-content;
+}
+
+@media screen and (max-width: 767px)  {
+  .lead__title {
+    margin: 0 auto 16px;
+    line-height: 44px;
+    font-size: 40px;
+    font-weight: 900;
+  }
+}
