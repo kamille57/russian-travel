@@ -6,6 +6,6 @@
 }
 
 .place-website__link:hover {
-    transition: 1s;
-    opacity: .8;
+  transition: 1s;
+  opacity: .8;
 }

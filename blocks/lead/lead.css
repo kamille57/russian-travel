@@ -1,17 +1,17 @@
 .lead {
-  margin: 0 auto;
+  padding: 0;
   display: flex;
   flex-direction: column;
 }
 
 @media screen and (min-width: 1024px) and (max-width: 1200px) {
   .lead {
-    width: calc(100vw - 96px);
+    margin: 0 48px;
   }
 }
 
 @media screen and (min-width: 1201px) {
   .lead {
-    width: calc(100vw - 148px - 148px);
+      padding: 8px 100px 0;
   }
 }

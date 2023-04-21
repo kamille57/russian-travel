@@ -1,28 +1,20 @@
 .content {
-  margin: 48px 0 92px;
+  max-width: 1184px;
+  margin: auto;
   color: white;
   display: flex;
   flex-direction: column;
   row-gap: 92px;
-  justify-content: space-between;
 }
 
-@media screen and (max-width: 767px)  {
+@media screen and (max-width: 768px) {
   .content {
-    margin: 48px 0 0;
     row-gap: 64px;
   }
-}
+ }
 
 @media screen and (min-width: 768px) and (max-width: 1023px) {
   .content {
     row-gap: 88px;
-    margin: 48px 0 0;
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  .content {
-    margin: 48px 48px 92px;  
   }
 }

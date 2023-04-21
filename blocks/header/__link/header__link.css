@@ -11,10 +11,9 @@
   transition: 1s;
 }
 
-@media screen and (max-width: 767px)  {
+@media screen and (max-width: 767px) {
   .header__link {
     line-height: 20px;
     font-size: 18px;
-    font-weight: 400;
   }
 }
