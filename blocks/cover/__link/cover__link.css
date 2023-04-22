@@ -29,3 +29,9 @@
   opacity: 0.8;
   transition: 1s;
 }
+
+@media screen and (min-width: 1200px) {
+  .cover__link {
+    min-height: calc((100vw - 96px)/1.6);
+  }
+}
